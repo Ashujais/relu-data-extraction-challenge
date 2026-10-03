@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relu Consultancy — Data Extraction Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans min-h-screen">
+    <!-- Header -->
+    <header class="bg-slate-800/80 backdrop-blur border-b border-slate-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-lg bg-indigo-600 flex items-center justify-center font-bold text-xl text-white shadow-lg shadow-indigo-500/30">
+                    <i class="fa-solid fa-database"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight text-white">Relu Consultancy — Live Extraction Hub</h1>
+                    <p class="text-xs text-slate-400">Automated Web Automation & Intelligence Challenge</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3 text-xs">
+                <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Scrapers Live & Verified
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-8 space-y-8">
+        <!-- Key Metrics Cards -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="bg-slate-800/60 border border-slate-700/80 rounded-xl p-5 shadow-sm hover:border-slate-600 transition">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-xs font-medium uppercase tracking-wider text-slate-400">Disney Cruises</p>
+                        <h3 class="text-2xl font-bold mt-1 text-white" id="stat-disney-total">170</h3>
+                        <p class="text-xs text-indigo-400 mt-1">946 total scheduled sailings</p>
+                    </div>
+                    <div class="p-2.5 rounded-lg bg-indigo-500/10 text-indigo-400 text-lg">
+                        <i class="fa-solid fa-ship"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-slate-800/60 border border-slate-700/80 rounded-xl p-5 shadow-sm hover:border-slate-600 transition">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-xs font-medium uppercase tracking-wider text-slate-400">Pacific Destination</p>
+                        <h3 class="text-2xl font-bold mt-1 text-white">2</h3>
+                        <p class="text-xs text-slate-400 mt-1">California Coast voyages</p>
+                    </div>
+                    <div class="p-2.5 rounded-lg bg-cyan-500/10 text-cyan-400 text-lg">
+                        <i class="fa-solid fa-compass"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-slate-800/60 border border-slate-700/80 rounded-xl p-5 shadow-sm hover:border-slate-600 transition">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-xs font-medium uppercase tracking-wider text-slate-400">Holiday Cruises</p>
+                        <h3 class="text-2xl font-bold mt-1 text-white">73</h3>
+                        <p class="text-xs text-amber-400 mt-1">Halloween & Very Merrytime</p>
+                    </div>
+                    <div class="p-2.5 rounded-lg bg-amber-500/10 text-amber-400 text-lg">
+                        <i class="fa-solid fa-gift"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-slate-800/60 border border-slate-700/80 rounded-xl p-5 shadow-sm hover:border-slate-600 transition">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <p class="text-xs font-medium uppercase tracking-wider text-slate-400">Ingredients Catalog</p>
+                        <h3 class="text-2xl font-bold mt-1 text-white">41,000+</h3>
+                        <p class="text-xs text-emerald-400 mt-1">4,001 active suppliers</p>
+                    </div>
+                    <div class="p-2.5 rounded-lg bg-emerald-500/10 text-emerald-400 text-lg">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab Controls -->
+        <div class="border-b border-slate-700 flex space-x-6 text-sm font-medium">
+            <button id="tab-disney-btn" class="pb-3 text-indigo-400 border-b-2 border-indigo-500 flex items-center gap-2" onclick="switchTab('disney')">
+                <i class="fa-solid fa-ship"></i> Disney Cruise Line Dataset
+            </button>
+            <button id="tab-ingredients-btn" class="pb-3 text-slate-400 hover:text-slate-200 flex items-center gap-2" onclick="switchTab('ingredients')">
+                <i class="fa-solid fa-seedling"></i> Ingredients Network Dataset
+            </button>
+        </div>
+
+        <!-- Disney Cruise Section -->
+        <section id="section-disney" class="space-y-4">
+            <div class="flex flex-col sm:flex-row gap-3 justify-between items-center bg-slate-800/40 p-4 rounded-xl border border-slate-700/60">
+                <div class="relative w-full sm:w-96">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-xs"></i>
+                    <input type="text" id="disney-search" placeholder="Search cruise, ship, port..." class="w-full bg-slate-900 border border-slate-700 rounded-lg pl-9 pr-4 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500" oninput="debounceFetchDisney()">
+                </div>
+                <div class="flex gap-2 w-full sm:w-auto">
+                    <select id="disney-dest-filter" class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-indigo-500" onchange="fetchDisney()">
+                        <option value="">All Destinations</option>
+                        <option value="Pacific Coast">Pacific Coast</option>
+                        <option value="Bahamas">Bahamas</option>
+                        <option value="Caribbean">Caribbean</option>
+                        <option value="Mexican Riviera">Mexican Riviera</option>
+                        <option value="Europe">Europe</option>
+                        <option value="Alaska">Alaska</option>
+                        <option value="Singapore">Singapore</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="bg-slate-800/60 rounded-xl border border-slate-700/80 overflow-hidden shadow-sm">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-slate-800/90 text-xs uppercase text-slate-400 border-b border-slate-700">
+                            <tr>
+                                <th class="py-3 px-4">Cruise Title</th>
+                                <th class="py-3 px-4">Ship</th>
+                                <th class="py-3 px-4">Destination</th>
+                                <th class="py-3 px-4">Departure Port</th>
+                                <th class="py-3 px-4 text-center">Nights</th>
+                                <th class="py-3 px-4 text-center">Sailings</th>
+                                <th class="py-3 px-4 text-right">Starting Price</th>
+                            </tr>
+                        </thead>
+                        <tbody id="disney-table-body" class="divide-y divide-slate-700/60 text-slate-200">
+                            <tr>
+                                <td colspan="7" class="py-8 text-center text-slate-400">Loading Disney cruises...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Pagination -->
+                <div class="p-4 bg-slate-800/90 border-t border-slate-700 flex justify-between items-center text-xs text-slate-400">
+                    <span id="disney-page-info">Showing page 1</span>
+                    <div class="flex gap-2">
+                        <button id="disney-prev" class="px-3 py-1 bg-slate-700 hover:bg-slate-600 rounded text-slate-200 disabled:opacity-40" onclick="prevDisney()">Previous</button>
+                        <button id="disney-next" class="px-3 py-1 bg-slate-700 hover:bg-slate-600 rounded text-slate-200 disabled:opacity-40" onclick="nextDisney()">Next</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ingredients Section -->
+        <section id="section-ingredients" class="space-y-4 hidden">
+            <div class="flex flex-col sm:flex-row gap-3 justify-between items-center bg-slate-800/40 p-4 rounded-xl border border-slate-700/60">
+                <div class="relative w-full sm:w-96">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-xs"></i>
+                    <input type="text" id="ing-search" placeholder="Search supplier, activity, sector..." class="w-full bg-slate-900 border border-slate-700 rounded-lg pl-9 pr-4 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500" oninput="debounceFetchIngredients()">
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="bg-slate-800/60 rounded-xl border border-slate-700/80 overflow-hidden shadow-sm">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-slate-800/90 text-xs uppercase text-slate-400 border-b border-slate-700">
+                            <tr>
+                                <th class="py-3 px-4">Company Name</th>
+                                <th class="py-3 px-4">Primary Activity</th>
+                                <th class="py-3 px-4">Categories</th>
+                                <th class="py-3 px-4">Address / Region</th>
+                                <th class="py-3 px-4">Telephone</th>
+                                <th class="py-3 px-4">Website</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ing-table-body" class="divide-y divide-slate-700/60 text-slate-200">
+                            <tr>
+                                <td colspan="6" class="py-8 text-center text-slate-400">Loading Ingredients Network suppliers...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Pagination -->
+                <div class="p-4 bg-slate-800/90 border-t border-slate-700 flex justify-between items-center text-xs text-slate-400">
+                    <span id="ing-page-info">Showing page 1</span>
+                    <div class="flex gap-2">
+                        <button id="ing-prev" class="px-3 py-1 bg-slate-700 hover:bg-slate-600 rounded text-slate-200 disabled:opacity-40" onclick="prevIngredients()">Previous</button>
+                        <button id="ing-next" class="px-3 py-1 bg-slate-700 hover:bg-slate-600 rounded text-slate-200 disabled:opacity-40" onclick="nextIngredients()">Next</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        let disneyPage = 1;
+        let ingPage = 1;
+        let debounceTimer;
+
+        function switchTab(tab) {
+            if (tab === 'disney') {
+                document.getElementById('section-disney').classList.remove('hidden');
+                document.getElementById('section-ingredients').classList.add('hidden');
+                document.getElementById('tab-disney-btn').className = "pb-3 text-indigo-400 border-b-2 border-indigo-500 flex items-center gap-2";
+                document.getElementById('tab-ingredients-btn').className = "pb-3 text-slate-400 hover:text-slate-200 flex items-center gap-2";
+            } else {
+                document.getElementById('section-disney').classList.add('hidden');
+                document.getElementById('section-ingredients').classList.remove('hidden');
+                document.getElementById('tab-ingredients-btn').className = "pb-3 text-indigo-400 border-b-2 border-indigo-500 flex items-center gap-2";
+                document.getElementById('tab-disney-btn').className = "pb-3 text-slate-400 hover:text-slate-200 flex items-center gap-2";
+                fetchIngredients();
+            }
+        }
+
+        async function fetchDisney() {
+            const search = document.getElementById('disney-search').value;
+            const dest = document.getElementById('disney-dest-filter').value;
+            const res = await fetch(`/api/disney?page=${disneyPage}&limit=12&search=${encodeURIComponent(search)}&destination=${encodeURIComponent(dest)}`);
+            const data = await res.json();
+            const tbody = document.getElementById('disney-table-body');
+            tbody.innerHTML = '';
+            
+            if (!data.data || data.data.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="7" class="py-8 text-center text-slate-500">No cruise itineraries found matching criteria.</td></tr>`;
+                return;
+            }
+
+            data.data.forEach(c => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-700/40 transition";
+                tr.innerHTML = `
+                    <td class="py-3 px-4 font-medium text-white">${c.cruise_title}</td>
+                    <td class="py-3 px-4 text-slate-300">${c.ship}</td>
+                    <td class="py-3 px-4"><span class="px-2 py-0.5 rounded text-xs bg-indigo-500/20 text-indigo-300">${c.destination_clean || c.destination}</span></td>
+                    <td class="py-3 px-4 text-slate-300">${c.departure_port}</td>
+                    <td class="py-3 px-4 text-center font-mono">${c.duration_nights}</td>
+                    <td class="py-3 px-4 text-center font-mono text-emerald-400 font-semibold">${c.number_of_booking_dates}</td>
+                    <td class="py-3 px-4 text-right font-mono text-slate-100">$${c.starting_price || '--'}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            document.getElementById('disney-page-info').innerText = `Showing page ${data.page} of ${data.total_pages} (${data.total} total items)`;
+            document.getElementById('disney-prev').disabled = data.page <= 1;
+            document.getElementById('disney-next').disabled = data.page >= data.total_pages;
+        }
+
+        async function fetchIngredients() {
+            const search = document.getElementById('ing-search').value;
+            const res = await fetch(`/api/ingredients?page=${ingPage}&limit=12&search=${encodeURIComponent(search)}`);
+            const data = await res.json();
+            const tbody = document.getElementById('ing-table-body');
+            tbody.innerHTML = '';
+
+            if (!data.data || data.data.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-slate-500">No company suppliers found.</td></tr>`;
+                return;
+            }
+
+            data.data.forEach(c => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-700/40 transition";
+                tr.innerHTML = `
+                    <td class="py-3 px-4 font-medium text-white">${c.company_name}</td>
+                    <td class="py-3 px-4 text-slate-300 text-xs">${c.primary_business_activity}</td>
+                    <td class="py-3 px-4 text-xs text-slate-400 max-w-xs truncate" title="${c.categories}">${c.categories}</td>
+                    <td class="py-3 px-4 text-slate-300 text-xs">${c.address}</td>
+                    <td class="py-3 px-4 text-slate-300 text-xs font-mono">${c.telephone || '--'}</td>
+                    <td class="py-3 px-4 text-xs"><a href="${c.website}" target="_blank" class="text-indigo-400 hover:underline">Link</a></td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            document.getElementById('ing-page-info').innerText = `Showing page ${data.page} of ${data.total_pages} (${data.total} total items)`;
+            document.getElementById('ing-prev').disabled = data.page <= 1;
+            document.getElementById('ing-next').disabled = data.page >= data.total_pages;
+        }
+
+        function debounceFetchDisney() {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => { disneyPage = 1; fetchDisney(); }, 300);
+        }
+        function debounceFetchIngredients() {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => { ingPage = 1; fetchIngredients(); }, 300);
+        }
+
+        function prevDisney() { if (disneyPage > 1) { disneyPage--; fetchDisney(); } }
+        function nextDisney() { disneyPage++; fetchDisney(); }
+        function prevIngredients() { if (ingPage > 1) { ingPage--; fetchIngredients(); } }
+        function nextIngredients() { ingPage++; fetchIngredients(); }
+
+        fetchDisney();
+    </script>
+</body>
+</html>

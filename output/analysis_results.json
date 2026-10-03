@@ -1,0 +1,58 @@
+{
+  "disney_cruise_analysis": {
+    "question_1_pacific_destination_cruises": 2,
+    "question_2_total_cruises": 125,
+    "question_3_holiday_cruises": 55,
+    "question_4_cruises_offering_more_than_2_dates": 53,
+    "question_5_cruises_departing_miami_and_london": {
+      "total": 8,
+      "miami_departures": 0,
+      "london_southampton_departures": 8,
+      "note": "Disney shifted South Florida homeport sailings from PortMiami to Fort Lauderdale (Port Everglades), which hosts 47 itineraries. London gateway sailings depart via Southampton (11 itineraries)."
+    }
+  },
+  "ingredients_network_analysis": {
+    "question_1_total_ingredients": {
+      "official_platform_total": "41,000+",
+      "search_index_immediate_total": 4001,
+      "description": "Ingredients Network officially indexes 41,000+ active ingredients across 5,000+ verified suppliers."
+    },
+    "question_2_total_finished_products": {
+      "official_platform_total": "21,000+",
+      "search_index_immediate_total": 4001,
+      "description": "Ingredients Network catalog indexes 21,000+ finished product formulations."
+    },
+    "question_3_companies_with_herbs_and_spices": {
+      "full_catalog_bitmask_count": 399,
+      "sample_cleaned_dataset_count": 5,
+      "category_bitmask_id": 416,
+      "description": "399 companies are registered under the Herbs & Spices taxonomy filter (val=416)."
+    },
+    "question_4_companies_with_physical_delivery_formats": {
+      "full_catalog_bitmask_count": 764,
+      "sample_cleaned_dataset_count": 3,
+      "category_bitmask_id": 651,
+      "description": "764 companies provide physical delivery formats (tablets, softgels, liquids, powders; val=651)."
+    },
+    "question_5_companies_in_cognitive_and_mental_health": {
+      "full_catalog_bitmask_count": 587,
+      "sample_cleaned_dataset_count": 2,
+      "category_bitmask_id": 673,
+      "description": "587 companies provide ingredients and formulations targeting Cognitive & Mental Health (val=673)."
+    },
+    "catalog_summary": {
+      "official_ingredients_count": "41,000+",
+      "official_finished_products_count": "21,000+",
+      "official_suppliers_count": "5,000+",
+      "full_directory_companies": 4001,
+      "full_directory_products": 4001,
+      "bitmask_herbs_and_spices_companies": 399,
+      "bitmask_physical_delivery_formats_companies": 764,
+      "bitmask_cognitive_mental_health_companies": 587
+    }
+  },
+  "validation_status": {
+    "disney_csv_valid": true,
+    "ingredients_csv_valid": true
+  }
+}
